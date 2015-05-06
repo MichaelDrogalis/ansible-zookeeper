@@ -1,1 +1,5 @@
-{{ ansible_hostname[-1:] }}
+{% for server in groups['zk-nodes'] %}
+{% if server == inventory_hostname %}
+{{ loop.index }}
+{% endif %}
+{% endfor %}
