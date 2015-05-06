@@ -10,6 +10,6 @@ Also consider:
 server.{{server.id}}={{server.host}}:2888:3888
 #}
 
-{% for server in zookeeper_hosts %}
-server.{{loop.index}}={{server}}:2888:3888
+{% for host in groups['zk-nodes'] %}
+server.{{ hostvars[host].ansible_hostname[-1:] }}={{ host }}:2888:3888
 {% endfor %}
