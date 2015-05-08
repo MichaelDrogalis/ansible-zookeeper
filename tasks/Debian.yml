@@ -18,6 +18,8 @@
   template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf/zoo.cfg
   tags: deploy
 
+# zookeeperd installs both /etc/init.d/zookeeper.conf and /etc/init/zookeeper.                                                                              
+# service gets confused about which one to use, so we force it to use Upstart.                                                                              
 - name: Restart zookeeper
-  service: name=zookeeper state=restarted enabled=yes
+  command: "service zookeeper restart"
   tags: deploy
