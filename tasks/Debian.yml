@@ -21,5 +21,6 @@
 # zookeeperd installs both /etc/init.d/zookeeper.conf and /etc/init/zookeeper.                                                                              
 # service gets confused about which one to use, so we force it to use Upstart.                                                                              
 - name: Restart zookeeper
-  command: "service zookeeper restart"
+  command:
+    _raw_params: "service zookeeper restart"
   tags: deploy
